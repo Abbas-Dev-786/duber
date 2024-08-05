@@ -61,14 +61,14 @@ const Navbar = () => {
           <div className="flex items-center lg:order-2">
             <NavLink
               to="/signup"
-              className="bg-white text-black  cursor-pointer hover:bg-gray-300 duration-200 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2"
+              className="bg-white text-black  cursor-pointer hover:bg-gray-300 duration-200  font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2"
             >
               Sign up
             </NavLink>
 
             <NavLink
               to="/login"
-              className="text-white border cursor-pointer hover:bg-GG duration-200 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2"
+              className="text-white border cursor-pointer hover:bg-GG duration-200  font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2"
             >
               Login
             </NavLink>
