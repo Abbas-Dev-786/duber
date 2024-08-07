@@ -1,8 +1,7 @@
-import React from "react";
 import { blocksData } from "../data/data";
 import HeroSection from "../components/HeroSection";
 import Banner from "../components/Banner";
-  
+
 const HomePage = () => {
   return (
     <>
