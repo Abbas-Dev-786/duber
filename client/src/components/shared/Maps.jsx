@@ -1,153 +1,91 @@
-import React, { useEffect, useState, useContext } from "react";
 import {
-  GoogleMap,
-  // Marker,
-  OverlayView,
-  DirectionsRenderer,
-} from "@react-google-maps/api";
-// import {} from "@react-google-maps/api/dist/"
+  APIProvider,
+  Map,
+  useMap,
+  useMapsLibrary,
+} from "@vis.gl/react-google-maps";
+import { useContext, useEffect, useState } from "react";
 import { SourceContext } from "../../context/SourceContext";
 import { DestinationContext } from "../../context/DestinationContext";
 
-function Maps() {
-  const containerStyle = {
-    width: "100%",
-    height: window.innerWidth * 0.5,
-  };
-
-  const [center, setCenter] = useState({
-    lat: 20.5937,
-    lng: 78.9629,
-  });
-
+const Directions = () => {
   const { source } = useContext(SourceContext);
   const { destination } = useContext(DestinationContext);
-  const [directionRoutePoints, setDirectionRoutePoints] = useState([]);
-
-  const [map, setMap] = useState(null);
-
-  useEffect(() => {
-    if (source?.length != [] && map) {
-      map.panTo({
-        lat: source.lat,
-        lng: source.lng,
-      });
-
-      setCenter({
-        lat: source.lat,
-        lng: source.lng,
-      });
-    }
-    if (source.length != [] && destination.length != []) {
-      directionRoute();
-    }
-  }, [source]);
+  const map = useMap();
+  const routesLib = useMapsLibrary("routes");
+  const [directionsService, setDirectionService] = useState();
+  const [directionsRenderer, setDirectionRenderer] = useState();
+  const [routes, setRoutes] = useState([]);
+  const [routeIndex, setRouteIndex] = useState(0);
+  const selected = routes[routeIndex];
+  const leg = selected?.legs[0];
 
   useEffect(() => {
-    if (destination?.length != [] && map) {
-      setCenter({
-        lat: destination.lat,
-        lng: destination.lng,
-      });
-    }
-    if (source.length != [] && destination.length != []) {
-      directionRoute();
-    }
-  }, [destination]);
+    if (!map || !routesLib) return;
 
-  const directionRoute = () => {
-    const directionsService = new window.google.maps.DirectionsService();
-    directionsService.route(
-      {
-        origin: { lat: source.lat, lng: source.lng },
-        destination: { lat: destination.lat, lng: destination.lng },
+    setDirectionService(new routesLib.DirectionsService());
+    setDirectionRenderer(new routesLib.DirectionsRenderer({ map }));
+  }, [map, routesLib]);
+
+  useEffect(() => {
+    if (!directionsRenderer || !directionsService) return;
+
+    directionsService
+      .route({
+        origin: source?.name,
+        destination: destination?.name,
         travelMode: window.google.maps.TravelMode.DRIVING,
-      },
-      (result, status) => {
-        if (status === window.google.maps.DirectionsStatus.OK) {
-          setDirectionRoutePoints(result.routes);
-        } else {
-          console.error("Error with direction route");
-        }
-      }
-    );
-  };
+        provideRouteAlternatives: true,
+      })
+      .then((response) => {
+        directionsRenderer.setDirections(response);
+        setRoutes(response.routes);
+      });
+  }, [directionsService, directionsRenderer, source, destination]);
 
-  const onLoad = React.useCallback(function callback(map) {
-    const bounds = new window.google.maps.LatLngBounds(center);
-    map.fitBounds(bounds);
+  return null;
 
-    setMap(map);
-  }, []);
+  // return (
+  //   <div
+  //   // style={{
+  //   //   background: "black",
+  //   //   color: "white",
+  //   //   position: "absolute",
+  //   //   top: "0%",
+  //   //   right: "0%",
+  //   // }}
+  //   >
+  //     <h2>Summary</h2>
+  //     <p>
+  //       {leg.start_address.split(",")[0]} to {leg.end_address.split(",")[0]}
+  //     </p>
+  //     <p>Distance:- {leg.distance?.text}</p>
+  //     <p>Duration:- {leg.duration?.text}</p>
+  //   </div>
+  // );
+};
 
-  const onUnmount = React.useCallback(function callback(map) {
-    setMap(null);
-  }, []);
+const Maps = () => {
+  const position = { lat: 43.6532, lng: -79.3832 };
+  const { source } = useContext(SourceContext);
+  const { destination } = useContext(DestinationContext);
+
+  if (!source?.name || !destination?.name) return;
 
   return (
-    <GoogleMap
-      mapContainerStyle={containerStyle}
-      center={center}
-      zoom={11}
-      onLoad={onLoad}
-      onUnmount={onUnmount}
-      options={{ mapId: "f1c80e12d64a7a64" }}
-    >
-      {source.length != [] ? (
-        <Marker
-          position={{ lat: source.lat, lng: source.lng }}
-          icon={{
-            url: "/source.png",
-            scaledSize: new window.google.maps.Size(30, 30),
-            origin: new window.google.maps.Point(0, 0),
-            anchor: new window.google.maps.Point(15, 15),
-          }}
-        >
-          <OverlayView
-            position={{ lat: source.lat, lng: source.lng }}
-            mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
-          >
-            <div className="p-2 bg-white font-bold inline-block m-3 rounded-xl">
-              <p className="text-black text-[16px]">{source.label}</p>
-            </div>
-          </OverlayView>
-        </Marker>
-      ) : null}
-
-      {destination.length != [] ? (
-        <Marker
-          position={{ lat: destination.lat, lng: destination.lng }}
-          icon={{
-            url: "/dest.png",
-            scaledSize: new window.google.maps.Size(30, 30),
-            origin: new window.google.maps.Point(0, 0),
-            anchor: new window.google.maps.Point(15, 15),
-          }}
-        >
-          {" "}
-          <OverlayView
-            position={{ lat: destination.lat, lng: destination.lng }}
-            mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
-          >
-            <div className="p-2 bg-white font-bold inline-block m-4 rounded-xl">
-              <p className="text-black text-[16px]">{destination.label}</p>
-            </div>
-          </OverlayView>
-        </Marker>
-      ) : null}
-
-      <DirectionsRenderer
-        directions={directionRoutePoints}
-        options={{
-          suppressMarkers: true,
-          polylineOptions: {
-            strokeColor: "#000",
-            strokeWeight: 5,
-          },
-        }}
-      />
-    </GoogleMap>
+    <APIProvider apiKey={import.meta.env.VITE_GOOGLE_API_KEY}>
+      <Map
+        style={{ width: "100%", height: "70vh" }}
+        defaultCenter={position}
+        defaultZoom={8}
+        fullscreenControl={false}
+        // gestureHandling={"greedy"}
+        disableDefaultUI={true}
+      >
+        <Directions />
+      </Map>
+    </APIProvider>
   );
-}
+};
 
 export default Maps;
