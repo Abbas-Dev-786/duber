@@ -7,16 +7,16 @@ import sourceImg from "./../../assets/source.png";
 import destImg from "./../../assets/dest.png";
 
 function InputItem({ type }) {
-  const [value, setValue] = useState(null);
   const [placeholder, setPlaceholder] = useState("null");
-  const { setSource } = useContext(SourceContext);
-  const { setdestination } = useContext(DestinationContext);
+  const { setSource, source } = useContext(SourceContext);
+  const { setdestination, destination } = useContext(DestinationContext);
+  const [value, setValue] = useState(type == "source" ? source : destination);
 
   useEffect(() => {
     type == "source"
       ? setPlaceholder("Pickup Location")
       : setPlaceholder("Dropoff Location");
-  }, []);
+  }, [type]);
 
   const getLatandLng = (place, type) => {
     const placeId = place.value.place_id;
@@ -80,3 +80,7 @@ function InputItem({ type }) {
 }
 
 export default InputItem;
+
+InputItem.propTypes = {
+  type: String,
+};
