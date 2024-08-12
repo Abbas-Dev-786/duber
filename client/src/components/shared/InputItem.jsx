@@ -3,6 +3,9 @@ import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 import { SourceContext } from "../../context/SourceContext";
 import { DestinationContext } from "../../context/DestinationContext";
 
+import sourceImg from "./../../assets/source.png";
+import destImg from "./../../assets/dest.png";
+
 function InputItem({ type }) {
   const [value, setValue] = useState(null);
   const [placeholder, setPlaceholder] = useState("null");
@@ -17,7 +20,7 @@ function InputItem({ type }) {
 
   const getLatandLng = (place, type) => {
     const placeId = place.value.place_id;
-    const service = new google.maps.places.PlacesService(
+    const service = new window.google.maps.places.PlacesService(
       document.createElement("div")
     );
     service.getDetails({ placeId }, (result, status) => {
@@ -46,7 +49,7 @@ function InputItem({ type }) {
   return (
     <div className="bg-slate-200 p-3 rounded-lg mt-3 flex items-center gap-4">
       <img
-        src={type == "source" ? "/source.png" : "/dest.png"}
+        src={type == "source" ? sourceImg : destImg}
         width={15}
         height={15}
       />

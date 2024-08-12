@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <div className="w-screen bg-black flex flex-col items-center justify-center  bg-section_bg text-white  py-[50px] px-4  font_tomato_grotesk z-[3] ">
       <NavLink to="/" className="flex items-center">
-        <p className="text-2xl font-bold text-white">Uber</p>
+        <p className="text-2xl font-bold text-white">Duber</p>
       </NavLink>
       <p className="text-xl text-center px-4 my-1">
         Made with ❤ by Abbas Bhanpura wala

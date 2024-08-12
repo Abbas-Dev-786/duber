@@ -10,13 +10,12 @@ const RideBookingPage = () => {
   const [destination, setdestination] = useState([]);
 
   return (
-    <SourceContext.Provider value={{ source, setSource }}>
-      <DestinationContext.Provider value={{ destination, setdestination }}>
-        <LoadScript
-          libraries={["places"]}
-          googleMapsApiKey={import.meta.env.VITE_GOOGLE_API_KEY}
-        >
-          {" "}
+    <LoadScript
+      libraries={["places"]}
+      googleMapsApiKey={import.meta.env.VITE_GOOGLE_API_KEY}
+    >
+      <SourceContext.Provider value={{ source, setSource }}>
+        <DestinationContext.Provider value={{ destination, setdestination }}>
           <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-5 pt-24">
             <div>
               <Search />
@@ -25,9 +24,9 @@ const RideBookingPage = () => {
               <Maps />
             </div>
           </div>
-        </LoadScript>
-      </DestinationContext.Provider>
-    </SourceContext.Provider>
+        </DestinationContext.Provider>
+      </SourceContext.Provider>{" "}
+    </LoadScript>
   );
 };
 

@@ -3,6 +3,11 @@ import Third from "./../assets/third.webp";
 import Fourth from "./../assets/fourth.webp";
 import Fifth from "./../assets/fifth.webp";
 
+import BlackCar from "./../assets/Black_v1.png";
+import ComfortCar from "./../assets/UberComfort.png";
+import PetCar from "./../assets/UberX_Pet.png";
+import V1 from "./../assets/UberX_v1.png";
+
 export const blocksData = [
   {
     heading: "Drive when you want, make what you need",
@@ -69,7 +74,7 @@ export const CarListData = [
     seat: 4,
     desc: "Affordable, Everyday rides",
     amount: 1.1,
-    image: "/UberX_v1.png",
+    image: V1,
   },
   {
     id: 2,
@@ -77,15 +82,7 @@ export const CarListData = [
     seat: 4,
     desc: "Newer cars with extra legroom",
     amount: 1.6,
-    image: "/UberComfort.png",
-  },
-  {
-    id: 3,
-    name: "Uber XL",
-    seat: 6,
-    desc: "Affordable rides for groups up to 6",
-    amount: 1.9,
-    image: "/UberXL_New.png",
+    image: ComfortCar,
   },
   {
     id: 4,
@@ -93,7 +90,7 @@ export const CarListData = [
     seat: 4,
     desc: "Affordable rides for you and your pet",
     amount: 1.4,
-    image: "/UberX_Pet.png",
+    image: PetCar,
   },
   {
     id: 5,
@@ -101,6 +98,6 @@ export const CarListData = [
     seat: 4,
     desc: "Affordable, Everyday rides",
     amount: 1.5,
-    image: "/Black_v1.png",
+    image: BlackCar,
   },
 ];

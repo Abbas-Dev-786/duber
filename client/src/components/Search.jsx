@@ -15,7 +15,7 @@ function Search() {
   //   }, [source, destination]);
 
   const calculateDistance = () => {
-    const dist = google.maps.geometry.spherical.computeDistanceBetween(
+    const dist = window.google.maps.geometry.spherical.computeDistanceBetween(
       { lat: source.lat, lng: source.lng },
       { lat: destination.lat, lng: destination.lng }
     );

@@ -4,8 +4,8 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const NAV_LINKS = [
-  { text: "rider", link: "/rider" },
-  { text: "driver", link: "/driver" },
+  { text: "Book a Ride", link: "/book-ride" },
+  { text: "Become a Driver", link: "/driver-register" },
 ];
 
 const Navbar = () => {
@@ -53,7 +53,7 @@ const Navbar = () => {
               </svg>
             </button>
             <NavLink to="/" className="flex items-center">
-              <p className="text-2xl font-bold text-white">Uber</p>
+              <p className="text-2xl font-bold text-white">Duber</p>
             </NavLink>
           </div>
 
