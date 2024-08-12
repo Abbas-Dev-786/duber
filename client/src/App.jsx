@@ -6,7 +6,7 @@ import RideBookingPage from "./routes/RideBooking";
 
 const App = () => {
   return (
-    <div>
+    <>
       <Navbar />
 
       <Routes>
@@ -15,7 +15,7 @@ const App = () => {
       </Routes>
 
       <Footer />
-    </div>
+    </>
   );
 };
 
