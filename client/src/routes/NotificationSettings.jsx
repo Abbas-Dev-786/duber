@@ -37,7 +37,7 @@ const NotificationSettings = () => {
       const signature = await signMessageAsync({ message: message });
       await register({ registerParams, signature });
     } catch (registerIdentityError) {
-      console.error(registerIdentityError);
+      console.error(registerIdentityError, "💥");
     }
   };
 
@@ -48,25 +48,25 @@ const NotificationSettings = () => {
   const isSubscribed = Boolean(subscription);
 
   // Handle Test Notification
-  const handleTestNotification = async () => {
-    if (isSubscribed) {
-      try {
-        console.log({ address });
-        await sendNotification({
-          accounts: [`eip155:1:${address}`],
-          notification: {
-            title: "GM Stable Test",
-            body: "Hack it until you make it!",
-            icon: `${window.location.origin}/WalletConnect-blue.svg`,
-            url: window.location.origin,
-            type: "805e6d86-4b35-4b9a-b81a-a2f761e0e687",
-          },
-        });
-      } catch (error) {
-        console.error("Notification Error", error);
-      }
-    }
-  };
+  //   const handleTestNotification = async () => {
+  //     if (isSubscribed) {
+  //       try {
+  //         console.log({ address });
+  //         await sendNotification({
+  //           accounts: [`eip155:1:${address}`],
+  //           notification: {
+  //             title: "GM Stable Test",
+  //             body: "Hack it until you make it!",
+  //             icon: `${window.location.origin}/WalletConnect-blue.svg`,
+  //             url: window.location.origin,
+  //             type: "805e6d86-4b35-4b9a-b81a-a2f761e0e687",
+  //           },
+  //         });
+  //       } catch (error) {
+  //         console.error("Notification Error", error);
+  //       }
+  //     }
+  //   };
 
   // Get Notifications
   //   const { data: notificationsData } = useNotifications(
@@ -104,7 +104,7 @@ const NotificationSettings = () => {
                 {isSubscribed ? "Unsubscribe" : "Subscribe"}
               </button>
             </div>
-            <div className={styles.btnContainer}>
+            {/* <div className={styles.btnContainer}>
               <span>Test Notification</span>
 
               <button
@@ -114,7 +114,7 @@ const NotificationSettings = () => {
               >
                 Test Notification
               </button>
-            </div>
+            </div> */}
             <hr />
           </div>
           <Messages />
