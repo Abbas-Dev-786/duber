@@ -6,6 +6,7 @@ import RideBookingPage from "./routes/RideBooking";
 import { useState } from "react";
 import { SourceContext } from "./context/SourceContext";
 import { DestinationContext } from "./context/DestinationContext";
+import NotificationSettings from "./routes/NotificationSettings";
 
 const App = () => {
   const [source, setSource] = useState([]);
@@ -18,7 +19,11 @@ const App = () => {
 
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/book-ride" element={<RideBookingPage />} />
+          <Route path="/book-ride" element={<RideBookingPage />} />{" "}
+          <Route
+            path="/notification-settings"
+            element={<NotificationSettings />}
+          />
           <Route path="/driver-register" element={<>working</>} />
         </Routes>
 

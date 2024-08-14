@@ -5,6 +5,7 @@ import { defaultWagmiConfig } from "@web3modal/wagmi/react/config";
 import { cookieStorage, createStorage, WagmiProvider } from "wagmi";
 import { arbitrum, base, mainnet, sepolia } from "wagmi/chains";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { initWeb3InboxClient } from "@web3inbox/react";
 
 // 0. Setup queryClient
 const queryClient = new QueryClient();
@@ -42,6 +43,14 @@ createWeb3Modal({
   enableSwaps: true,
   enableOnramp: true,
   enableAnalytics: true, // Optional - defaults to your Cloud configuration
+});
+
+// W3Inbox Setup
+const appDomain = import.meta.env.VITE_APPKIT_PROJECT_DOMAIN;
+initWeb3InboxClient({
+  projectId,
+  domain: appDomain,
+  allApps: import.meta.env.MODE !== "production",
 });
 
 export default function AppKitProvider({ children }) {
