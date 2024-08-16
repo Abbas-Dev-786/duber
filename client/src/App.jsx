@@ -7,10 +7,21 @@ import { useState } from "react";
 import { SourceContext } from "./context/SourceContext";
 import { DestinationContext } from "./context/DestinationContext";
 import NotificationSettings from "./routes/NotificationSettings";
+import { useReadContract } from "wagmi";
+import abi from "./abi/contract.abi.json";
 
 const App = () => {
   const [source, setSource] = useState([]);
   const [destination, setdestination] = useState([]);
+
+  const result = useReadContract({
+    abi,
+    address: "0xd7190301518E834A03D20c0C6Dd4fF54c294922F",
+    functionName: "tripCounter",
+    args: [],
+  });
+
+  console.log(result, "🥳");
 
   return (
     <SourceContext.Provider value={{ source, setSource }}>

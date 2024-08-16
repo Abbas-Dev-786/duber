@@ -25,7 +25,10 @@ const NotificationSettings = () => {
   const { address } = useAccount();
   const { signMessageAsync } = useSignMessage();
 
-  const { isRegistered } = useWeb3InboxAccount(`eip155:1:${address}`);
+  const { isRegistered, data: account } = useWeb3InboxAccount(
+    `eip155:1:${address}`
+  );
+  console.log(account);
 
   // Registration
   const { prepareRegistration } = usePrepareRegistration();
@@ -87,7 +90,7 @@ const NotificationSettings = () => {
             <div className={styles.btnContainer}>
               <span>{isRegistered ? `Registered` : `Not Registered`}</span>
               <button
-                disabled={isRegistering || isRegistered}
+                // disabled={isRegistering || isRegistered}
                 className={`${styles.btn} ${!isRegistered && styles.btnInfo}`}
                 onClick={handleRegistration}
               >
@@ -117,7 +120,7 @@ const NotificationSettings = () => {
             </div> */}
             <hr />
           </div>
-          <Messages />
+          {/* <Messages /> */}
         </div>
       </main>
     </div>

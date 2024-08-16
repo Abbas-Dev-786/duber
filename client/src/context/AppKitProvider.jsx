@@ -3,7 +3,7 @@ import { createWeb3Modal } from "@web3modal/wagmi/react";
 import { defaultWagmiConfig } from "@web3modal/wagmi/react/config";
 
 import { cookieStorage, createStorage, WagmiProvider } from "wagmi";
-import { arbitrum, base, mainnet, sepolia } from "wagmi/chains";
+import { arbitrum, base, baseSepolia, mainnet } from "wagmi/chains";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { initWeb3InboxClient } from "@web3inbox/react";
 
@@ -21,7 +21,7 @@ const metadata = {
   icons: ["https://avatars.githubusercontent.com/u/37784886"],
 };
 
-const chains = [sepolia, mainnet, arbitrum, base];
+const chains = [baseSepolia, base];
 const config = defaultWagmiConfig({
   chains,
   projectId,
@@ -50,7 +50,9 @@ const appDomain = import.meta.env.VITE_APPKIT_PROJECT_DOMAIN;
 initWeb3InboxClient({
   projectId,
   domain: appDomain,
-  allApps: import.meta.env.MODE !== "production",
+  allApps: true,
+  logLevel: "info",
+  // allApps: import.meta.env.MODE !== "production",
 });
 
 export default function AppKitProvider({ children }) {
