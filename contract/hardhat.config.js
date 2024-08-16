@@ -13,6 +13,12 @@ module.exports = {
     base_sepolia: {
       url: "https://sepolia.base.org",
       accounts: { mnemonic: process.env.MNEMONIC ?? "" },
+      verify: {
+        etherscan: {
+          apiUrl: "https://api-sepolia.basescan.org",
+          apiKey: "NK8HTGZ9ZEUS3CAQFWS39M328MD1X452JR",
+        },
+      },
     },
   },
 };
