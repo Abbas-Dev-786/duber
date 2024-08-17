@@ -15,7 +15,7 @@ const App = () => {
   const [source, setSource] = useState([]);
   const [destination, setdestination] = useState([]);
 
-  const { data, writeContract } = useWriteContract());
+  const { data, writeContract } = useWriteContract();
   console.log(data, "🌞");
 
   const result = useReadContract({
