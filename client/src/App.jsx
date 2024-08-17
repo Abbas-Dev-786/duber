@@ -9,6 +9,7 @@ import { DestinationContext } from "./context/DestinationContext";
 import NotificationSettings from "./routes/NotificationSettings";
 import { useReadContract } from "wagmi";
 import abi from "./abi/contract.abi.json";
+import { CONTRACT_ADDRESS } from "./constant";
 
 const App = () => {
   const [source, setSource] = useState([]);
@@ -16,7 +17,7 @@ const App = () => {
 
   const result = useReadContract({
     abi,
-    address: "0xd7190301518E834A03D20c0C6Dd4fF54c294922F",
+    address: CONTRACT_ADDRESS,
     functionName: "tripCounter",
     args: [],
   });
