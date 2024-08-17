@@ -49,7 +49,15 @@ function CarListOption({ distance }) {
           </p>
           <button
             className="p-3 bg-black text-white rounded-lg text-center"
-            onClick={() => setIsOpen(true)}
+            onClick={() => {
+              setIsOpen(true);
+              writeContract({
+                abi,
+                address: CONTRACT_ADDRESS,
+                functionName: "createTrip",
+                args: [source.name, destination.name],
+              });
+            }}
           >
             Request {selectedCar.name}
           </button>
@@ -60,12 +68,6 @@ function CarListOption({ distance }) {
         open={isOpen && !isPending}
         onClose={() => {
           setIsOpen(false);
-          writeContract({
-            abi,
-            address: CONTRACT_ADDRESS,
-            functionName: "createTrip",
-            args: [source.name, destination.name],
-          });
         }}
         className="relative z-50"
       >
