@@ -18,6 +18,11 @@ const DriverRegister = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
+    if (!name || !license) {
+      toast.error("All fields are compulsory");
+      return;
+    }
+
     writeContract({
       abi,
       address: CONTRACT_ADDRESS,

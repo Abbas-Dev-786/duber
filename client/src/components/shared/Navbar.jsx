@@ -5,7 +5,9 @@ import { NavLink } from "react-router-dom";
 
 const NAV_LINKS = [
   { text: "Book a Ride", link: "/book-ride" },
+  { text: "My Trips", link: "/rider/trips" },
   { text: "Become a Driver", link: "/driver-register" },
+  { text: "Driver Trips", link: "/driver/trips" },
 ];
 
 const Navbar = () => {
