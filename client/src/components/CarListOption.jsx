@@ -13,6 +13,8 @@ import abi from "./../abi/contract.abi.json";
 import { useWriteContract } from "wagmi";
 import { SourceContext } from "../context/SourceContext";
 import { DestinationContext } from "../context/DestinationContext";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 function CarListOption({ distance }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,11 +22,18 @@ function CarListOption({ distance }) {
   const [selectedCar, setSelectedCar] = useState();
   const { source } = useContext(SourceContext);
   const { destination } = useContext(DestinationContext);
+  const navigate = useNavigate();
 
   const data = useWriteContract();
-  const { data: hash, isPending, writeContract } = data;
-  console.log(data, "🌞");
-  console.log(hash, "⏰");
+  const { data: hash, isPending, writeContract, isSuccess } = data;
+
+  useEffect(() => {
+    if (hash && isSuccess) {
+      toast.success("ride booking successfull");
+      setIsOpen(false);
+      navigate("/");
+    }
+  }, [isSuccess, hash]);
 
   return (
     <div className="mt-5 overflow-auto h-[500px]">
