@@ -3,11 +3,11 @@ import Navbar from "./components/shared/Navbar";
 import HomePage from "./routes/HomePage";
 import Footer from "./components/shared/Footer";
 import RideBookingPage from "./routes/RideBooking";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SourceContext } from "./context/SourceContext";
 import { DestinationContext } from "./context/DestinationContext";
 import NotificationSettings from "./routes/NotificationSettings";
-import { useReadContract } from "wagmi";
+import { useReadContract, useWriteContract } from "wagmi";
 import abi from "./abi/contract.abi.json";
 import { CONTRACT_ADDRESS } from "./constant";
 
@@ -15,12 +15,24 @@ const App = () => {
   const [source, setSource] = useState([]);
   const [destination, setdestination] = useState([]);
 
+  const { data, writeContract } = useWriteContract());
+  console.log(data, "🌞");
+
   const result = useReadContract({
     abi,
     address: CONTRACT_ADDRESS,
     functionName: "tripCounter",
     args: [],
   });
+
+  useEffect(() => {
+    writeContract({
+      abi,
+      address: CONTRACT_ADDRESS,
+      functionName: "createTrip",
+      args: [source.name, destination.name],
+    });
+  }, []);
 
   console.log(result, "🥳");
 
