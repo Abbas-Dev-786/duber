@@ -3,22 +3,22 @@
 ![MochiMochimochiGIF (2)](https://github.com/user-attachments/assets/facb2478-167a-42b3-985d-143b7ce1dbbc)
 
 
-## Project Description
+## Project Description 🗒️
 
-This project implements a decentralized ride-sharing system using Ethereum smart contracts deployed on base sepolia testnet and a React frontend. The system allows riders to register, book rides, and drivers to accept and complete trips. All trip and transaction details are stored on the blockchain, ensuring transparency and immutability.
+This project implements a decentralized 🚘 ride-sharing system using Ethereum smart contracts deployed on base sepolia testnet and a React frontend. The system allows riders to register 💻, book rides 📚, and drivers to accept and complete trips ✅. All trip and transaction details are stored on the blockchain 🌐, ensuring transparency and immutability.
 
-### Technology Stack
+### Technology Stack 💪
 - Frontend: React, WalletConnect Login, Wagmi
 - Smart Contract: Solidity, Hardhat
 - Blockchain: Base Sepolia / Base 
 
 Key features include:
-- User registration (both riders and drivers)
-- Trip creation and management
-- Transaction recording for completed trips
-- Retrieval of user, trip, and transaction details
+- User registration (both riders and drivers) 📝
+- Trip creation and management 🎫
+- Transaction recording for completed trips ⏺️
+- Retrieval of user, trip, and transaction details ✅
 
-## Challenges Faced
+## Challenges Faced 🧐
 
 During the development of this project, several challenges were encountered:
 
