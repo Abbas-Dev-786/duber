@@ -42,7 +42,7 @@ During the development of this project, several challenges were encountered:
 
 ## Demo Video
 
-[Watch the project demo video](https://example.com/ride-sharing-dapp-demo-video)
+[Watch the project demo video](https://www.loom.com/share/5de2b384d43046e0ba7a4c587d376ff2?sid=6f076e40-7824-4b1b-9074-944f7d91b361)
 
 
 ## Current Implementation Status
