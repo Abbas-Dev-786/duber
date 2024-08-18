@@ -19,7 +19,8 @@ Key features include:
 - Retrieval of user, trip, and transaction details ✅
 
 ## Links 🔗
-Live Preview:- [View Web-app](https://amb-duber.vercel.app/) 
+Live Preview:- [View Web-app](https://amb-duber.vercel.app/)
+
 Smart Contract:- [View Contract Details](https://base-sepolia.blockscout.com/address/0xC4a85Bfc6589D8cCE1cf95a700aF954d20d4e8f0)
 
 ## Challenges Faced 🧐
