@@ -34,7 +34,7 @@ During the development of this project, several challenges were encountered:
 
 ## Project Snapshot
 
-![Ride-Sharing DApp Interface](https://example.com/ride-sharing-dapp-screenshot.png)
+![Ride-Sharing DApp Interface](https://drive.google.com/file/d/13jpCRSgKx2i3VHweOEqW5YBWWeeN_ewL/view?usp=drive_link)
 
 ## Demo Video
 
