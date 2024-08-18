@@ -4,34 +4,31 @@ import abi from "./../abi/contract.abi.json";
 import { CONTRACT_ADDRESS } from "../constant";
 
 const RiderTrips = () => {
-  // { data, error, isLoading, isError }
-  const data = useReadContract({
+  const { data, error, isLoading, isError } = useReadContract({
     abi,
     address: CONTRACT_ADDRESS,
     functionName: "getRiderTrips",
   });
 
-  // if (isLoading) {
-  //   return (
-  //     <div className="w-full h-screen flex items-center justify-center">
-  //       <h2 className="text-center">Loading...</h2>
-  //     </div>
-  //   );
-  // }
+  if (isLoading) {
+    return (
+      <div className="w-full h-screen flex items-center justify-center">
+        <h2 className="text-center">Loading...</h2>
+      </div>
+    );
+  }
 
-  // if (isError) {
-  //   toast.error(error.shortMessage);
-  // }
+  if (isError) {
+    toast.error(error.shortMessage);
+  }
 
-  // if (!data) {
-  //   return (
-  //     <div className="w-full h-screen flex items-center justify-center">
-  //       <h2 className="text-center">No trips found</h2>
-  //     </div>
-  //   );
-  // }
-
-  console.log(data);
+  if (!data) {
+    return (
+      <div className="w-full h-screen flex items-center justify-center">
+        <h2 className="text-center">No trips found</h2>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full h-screen flex items-center justify-center">

@@ -43,7 +43,7 @@ const App = () => {
           />
           <Route path="/driver-register" element={<DriverRegister />} />{" "}
           <Route path="/rider/trips" element={<RiderTrips />} />{" "}
-          <Route path="/driver/trips" element={<DriverTrips />} />
+          {/* <Route path="/driver/trips" element={<DriverTrips />} /> */}
         </Routes>
 
         <Footer />

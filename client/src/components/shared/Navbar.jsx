@@ -7,7 +7,7 @@ const NAV_LINKS = [
   { text: "Book a Ride", link: "/book-ride" },
   { text: "My Trips", link: "/rider/trips" },
   { text: "Notifications", link: "/notification-settings" },
-  // { text: "Become a Driver", link: "/driver-register" },
+  { text: "Become a Driver", link: "/driver-register" },
   // { text: "Driver Trips", link: "/driver/trips" },
 ];
 
@@ -63,19 +63,6 @@ const Navbar = () => {
           {/* Action buttons */}
           <div className="flex items-center lg:order-2">
             <w3m-button label="Login / Register" />
-            {/* <NavLink
-              to="/signup"
-              className="bg-white text-black  cursor-pointer hover:bg-gray-300 duration-200  font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2"
-            >
-              Sign up
-            </NavLink>
-
-            <NavLink
-              to="/login"
-              className="text-white border cursor-pointer hover:bg-GG duration-200  font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2"
-            >
-              Login
-            </NavLink> */}
           </div>
 
           {/* nav links */}
