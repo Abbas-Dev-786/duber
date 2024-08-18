@@ -34,7 +34,11 @@ During the development of this project, several challenges were encountered:
 
 ## Project Snapshot
 
-![Ride-Sharing DApp Interface](https://drive.google.com/file/d/13jpCRSgKx2i3VHweOEqW5YBWWeeN_ewL/view?usp=drive_link)
+![Screenshot_106](https://github.com/user-attachments/assets/eb51cd7d-23e8-454c-b2ed-570c963e2850)
+![screencapture-amb-duber-vercel-app-2024-08-17-19_30_16 (1)](https://github.com/user-attachments/assets/3c5c6f94-3b46-4abd-9cec-95e2ea554b2c)
+y-1723904093265](https://github.com/user-attachments/assets/12653dd4-48a6-4629-b58e-0f6d5d0f2420)
+![screel![screely-1723904172105](https://github.com/user-attachments/assets/b2263e7d-c585-4a1d-99f3-79b44e49feaf)
+
 
 ## Demo Video
 
